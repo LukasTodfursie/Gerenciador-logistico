@@ -1,0 +1,4 @@
+# Arquivos do PhpStorm e do sistema operacional
+.idea/
+.DS_Store
+Thumbs.db

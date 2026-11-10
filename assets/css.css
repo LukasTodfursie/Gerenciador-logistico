@@ -1,0 +1,56 @@
+/* ===== Estilos próprios do projeto ===== */
+
+body {
+    min-height: 100vh;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* Título das páginas com uma barrinha azul na lateral */
+.titulo-pagina {
+    border-left: 4px solid #0d6efd;
+    padding-left: 0.75rem;
+}
+
+/* Cartões com cantos arredondados e sombra suave */
+.card {
+    border: 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.table thead th {
+    white-space: nowrap;
+}
+
+/* Efeito ao apertar um botão */
+.btn {
+    transition: transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* Linhas de produto do frete: entram com uma animação */
+.item-frete + .item-frete {
+    margin-top: 0.5rem;
+}
+
+.item-frete {
+    animation: aparecer 0.25s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
