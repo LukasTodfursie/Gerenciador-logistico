@@ -1,5 +1,7 @@
 <?php
 require_once 'includes/conexao.php';
+require_once 'includes/validacoes.php';
+$scripts = ['assets/mascaras.js'];
 $titulo = 'Endereços';
 
 // Lista dos campos do formulário (na mesma ordem das colunas do banco)
@@ -54,8 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erros[] = "Informe o campo $rotulo.";
             }
         }
-        if (!preg_match('/^\d{5}-?\d{3}$/', $dados['cep'])) {
-            $erros[] = 'Informe o CEP no formato 00000-000.';
+        if (!validarCep($dados['cep'])) {
+            $erros[] = 'Informe um CEP válido, com 8 números (ex.: 85960-000).';
+        } else {
+            $dados['cep'] = formatarCep($dados['cep']);
         }
         if (!preg_match('/^[A-Z]{2}$/', $dados['uf'])) {
             $erros[] = 'Informe a UF com 2 letras (ex.: PR).';
@@ -115,6 +119,7 @@ include 'includes/header.php';
                 <input type="text" class="form-control" id="cep" name="cep" maxlength="9" placeholder="00000-000"
                        value="<?php echo htmlspecialchars($dados['cep']); ?>">
             </div>
+            <div class="invalid-feedback">CEP não encontrado.</div>
             <div class="col-md-9">
                 <label class="form-label" for="logradouro">Logradouro</label>
                 <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="150"

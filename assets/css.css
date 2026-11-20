@@ -1,32 +1,97 @@
-/* ===== Estilos próprios do projeto ===== */
+/* ===== Tema: azul-marinho e laranja ===== */
+:root {
+    --azul-escuro: #0d1f3f;
+    --azul-medio: #17305c;
+    --laranja: #f26a1b;
+    --laranja-claro: #ff8a3d;
+    --laranja-escuro: #d9570d;
+}
 
 body {
     min-height: 100vh;
 }
 
-.navbar-brand {
-    font-weight: 700;
-    letter-spacing: 0.3px;
+/* ----- Menu superior ----- */
+.navbar-escura {
+    background: linear-gradient(90deg, var(--azul-escuro), var(--azul-medio));
+    border-bottom: 3px solid var(--laranja);
 }
 
-/* Título das páginas com uma barrinha azul na lateral */
+.navbar-escura .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #fff;
+}
+
+.navbar-escura .navbar-brand i {
+    color: var(--laranja-claro);
+}
+
+.navbar-escura .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.navbar-escura .nav-link:hover {
+    color: #fff;
+}
+
+.navbar-escura .nav-link.active {
+    color: #fff;
+    border-bottom: 2px solid var(--laranja);
+}
+
+/* ----- Rodapé ----- */
+.rodape {
+    background: var(--azul-escuro);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ----- Títulos e cartões ----- */
 .titulo-pagina {
-    border-left: 4px solid #0d6efd;
+    border-left: 4px solid var(--laranja);
     padding-left: 0.75rem;
 }
 
-/* Cartões com cantos arredondados e sombra suave */
 .card {
     border: 0;
     border-radius: 0.75rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
+/* ----- Tabelas: cabeçalho azul-marinho ----- */
 .table thead th {
     white-space: nowrap;
 }
 
-/* Efeito ao apertar um botão */
+.table > thead.table-light {
+    --bs-table-bg: var(--azul-escuro);
+    --bs-table-color: #fff;
+    --bs-table-border-color: var(--azul-medio);
+}
+
+/* ----- Botões do Bootstrap na cor laranja ----- */
+.btn-primary {
+    --bs-btn-bg: var(--laranja);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja-escuro);
+    --bs-btn-hover-border-color: var(--laranja-escuro);
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-disabled-bg: var(--laranja);
+    --bs-btn-disabled-border-color: var(--laranja);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--laranja-escuro);
+    --bs-btn-border-color: var(--laranja);
+    --bs-btn-hover-bg: var(--laranja);
+    --bs-btn-hover-border-color: var(--laranja);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--laranja-escuro);
+    --bs-btn-active-border-color: var(--laranja-escuro);
+    --bs-btn-active-color: #fff;
+}
+
 .btn {
     transition: transform 0.1s ease;
 }
@@ -35,7 +100,14 @@ body {
     transform: scale(0.97);
 }
 
-/* Linhas de produto do frete: entram com uma animação */
+/* ----- Campos do formulário com foco laranja ----- */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--laranja);
+    box-shadow: 0 0 0 0.25rem rgba(242, 106, 27, 0.25);
+}
+
+/* ----- Linhas de produto do frete (animação) ----- */
 .item-frete + .item-frete {
     margin-top: 0.5rem;
 }
@@ -53,4 +125,78 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ----- Página inicial: painel azul com botões em pílula ----- */
+.painel-inicial {
+    background: linear-gradient(160deg, var(--azul-escuro), var(--azul-medio));
+    border-radius: 1rem;
+    padding: 2rem 1.5rem 2.5rem;
+    color: #fff;
+}
+
+.painel-inicial .saudacao {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.menu-botoes {
+    display: grid;
+    gap: 0.9rem;
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.botao-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.4rem 1.5rem 0.4rem 0.4rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--laranja-claro), var(--laranja));
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.botao-menu:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+}
+
+.botao-menu__icone {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--azul-escuro);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--laranja-claro);
+    font-size: 1.5rem;
+}
+
+.botao-menu__texto {
+    flex: 1;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+.botao-menu__contador {
+    position: absolute;
+    right: 1.1rem;
+    min-width: 1.9rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(13, 31, 63, 0.85);
+    font-size: 0.8rem;
+    text-align: center;
 }

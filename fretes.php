@@ -2,7 +2,7 @@
 require_once 'includes/conexao.php';
 $titulo = 'Fretes';
 
-// Excluir um frete (os produtos ligados a ele saem juntos, por causa do ON DELETE CASCADE)
+// Excluir um frete
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'excluir') {
     $comando = $pdo->prepare('DELETE FROM fretes WHERE id = ?');
     $comando->execute([(int) $_POST['id']]);
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'excluir
 $data = $_GET['data'] ?? '';
 $filtrando = (bool) preg_match('/^\d{4}-\d{2}-\d{2}$/', $data);
 
-// Monta a consulta; só acrescenta o WHERE se houver filtro
+// Monta a consulta;
 $sql = 'SELECT f.id, f.data_frete, f.valor_frete,
                t.nome AS transportador, o.apelido AS origem, d.apelido AS destino,
                (SELECT COALESCE(SUM(fp.quantidade), 0)

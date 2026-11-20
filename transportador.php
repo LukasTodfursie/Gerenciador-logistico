@@ -1,5 +1,7 @@
 <?php
 require_once 'includes/conexao.php';
+require_once 'includes/validacoes.php';
+$scripts = ['assets/mascaras.js']; // criado no passo 4
 $titulo = 'Transportadores';
 
 $campos = ['nome', 'cnpj', 'telefone', 'email', 'placa'];
@@ -44,9 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $editando = (int) $_POST['id'];
         }
 
-        if ($dados['nome'] === '') {
-            $erros[] = 'Informe o nome do transportador.';
+        if ($dados['cnpj'] === '') {
+            $erros[] = 'Informe o CNPJ.';
+        } elseif (!validarCnpj($dados['cnpj'])) {
+            $erros[] = 'CNPJ inválido. Confira os números digitados.';
+        } else {
+            $dados['cnpj'] = formatarCnpj($dados['cnpj']); // grava sempre no mesmo formato
         }
+
         if ($dados['cnpj'] === '') {
             $erros[] = 'Informe o CNPJ (a autenticidade não é validada).';
         }

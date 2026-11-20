@@ -1,6 +1,6 @@
 </main>
 
-<footer class="text-center text-muted py-4">
+<footer class="rodape text-center py-3 mt-4">
     Projeto acadêmico em PHP
 </footer>
 
